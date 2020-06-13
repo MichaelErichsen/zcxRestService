@@ -16,7 +16,8 @@ namespace zcxRestService.wwwroot
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            const string V = "Hello from a zcxRestService running in Docker running in zCX running in z/OS";
+            return new string[] { V };
         }
 
         // GET api/<PersonController>/5
