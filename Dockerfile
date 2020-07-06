@@ -1,25 +1,20 @@
 FROM clefos/mono:latest as base
-ADD . /src
+WORKDIR /app
 EXPOSE 80
-RUN xbuild --verbosity:diagnostic --filelogger zcxRestService.sln
-CMD ["mono", "/src/zcxRestService/bin/Debug/zcxRestService.exe"]
+RUN mkdir /app/publish
 
-#FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
-#WORKDIR /app
-#EXPOSE 80
-#
-#FROM clefos/mono:latest AS build
-#WORKDIR /src
-#COPY ["zcxRestService.csproj", ""]
-#RUN dotnet restore "./zcxRestService.csproj"
-#COPY . .
+FROM base as build
+WORKDIR /src
+COPY ["zcxRestService.csproj", ""]
+COPY . .
+#RUN nuget restore zcxRestService.csproj -verbosity detailed
 #WORKDIR "/src/."
-#RUN dotnet build "zcxRestService.csproj" -c Release -o /app/build
-#
+RUN xbuild /p:Configuration=Release 
+
 #FROM build AS publish
-#RUN dotnet publish "zcxRestService.csproj" -c Release -o /app/publish
-#
-#FROM base AS final
-#WORKDIR /app
-#COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "zcxRestService.dll"]
+#RUN msbuild /p:configuration=Release
+
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+CMD ["mono", "./zcxRestService.exe"]
