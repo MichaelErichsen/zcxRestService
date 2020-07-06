@@ -7,8 +7,8 @@ FROM base as build
 WORKDIR /src
 COPY ["zcxRestService.csproj", ""]
 COPY . .
-#RUN nuget restore zcxRestService.csproj -verbosity detailed
-#WORKDIR "/src/."
+#RUN nuget restore -verbosity detailed
+WORKDIR "/src/."
 RUN xbuild /p:Configuration=Release 
 
 #FROM build AS publish
