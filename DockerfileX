@@ -1,0 +1,21 @@
+#FROM clefos/mono:latest as base
+FROM amd64/mono as base
+WORKDIR /app
+EXPOSE 80
+RUN mkdir /app/publish
+
+FROM base as build
+WORKDIR /src
+COPY ["zcxRestService.csproj", ""]
+COPY . .
+RUN mono nuget.exe restore
+WORKDIR "/src/."
+#RUN dotnet build "zcxRestService.csproj" -c Release -o /app/build
+RUN msbuild /p:Configuration=Release 
+
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+#ENTRYPOINT ["dotnet", "zcxRestService.dll"]
+CMD ["mono", "./zcxRestService.exe"]
+#CMD [ "mono", "/src/zcxRestService/bin/Release/zcxRestService.exe" ]

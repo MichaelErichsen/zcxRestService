@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zcxRestService", "zcxRestService\zcxRestService.csproj", "{31CB836B-1B20-4E04-988D-D922FBB4AB70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zcxRestService", "zcxRestService.csproj", "{B05C7D9C-7AF9-4D2F-BC98-8C2798589E16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{31CB836B-1B20-4E04-988D-D922FBB4AB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31CB836B-1B20-4E04-988D-D922FBB4AB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31CB836B-1B20-4E04-988D-D922FBB4AB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31CB836B-1B20-4E04-988D-D922FBB4AB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B05C7D9C-7AF9-4D2F-BC98-8C2798589E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05C7D9C-7AF9-4D2F-BC98-8C2798589E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05C7D9C-7AF9-4D2F-BC98-8C2798589E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05C7D9C-7AF9-4D2F-BC98-8C2798589E16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3989821A-CE33-4DE5-A679-59AC65E25440}
+		SolutionGuid = {99BD9CE9-B969-42D4-BBE8-BCD023E3321B}
 	EndGlobalSection
 EndGlobal
