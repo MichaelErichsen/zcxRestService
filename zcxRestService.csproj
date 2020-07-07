@@ -6,6 +6,11 @@
 		<TargetFramework>netcoreapp2.1</TargetFramework>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>.</DockerfileContext>
+		<DockerfileBuildArguments>--tag zcxrestservice:s390x --tag zcxrestservice:latest</DockerfileBuildArguments>
+		<OutputType>exe</OutputType>
+		<StartupObject>zcxRestService.Program</StartupObject>
+		<Authors>Michael Erichsen</Authors>
+		<Company>Xact Consulting A/S</Company>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,8 +19,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.App" />
-		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" />
-		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
 	</ItemGroup>
 
 </Project>

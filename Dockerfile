@@ -1,4 +1,4 @@
-FROM clefos/mono:latest as base
+FROM mono:latest as base
 WORKDIR /app
 EXPOSE 80
 RUN mkdir /app/publish
@@ -9,7 +9,7 @@ COPY ["zcxRestService.csproj", ""]
 COPY . .
 #RUN nuget restore -verbosity detailed
 WORKDIR "/src/."
-RUN xbuild /p:Configuration=Release 
+RUN xbuild /p:Configuration=Release /p:OutDir=/app
 
 #FROM build AS publish
 #RUN msbuild /p:configuration=Release
