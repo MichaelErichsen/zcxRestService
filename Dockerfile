@@ -1,20 +1,24 @@
-FROM mono:latest as base
+FROM mono AS base
+#FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
 WORKDIR /app
 EXPOSE 80
-RUN mkdir /app/publish
 
-FROM base as build
+FROM mono AS build
+#FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
 WORKDIR /src
 COPY ["zcxRestService.csproj", ""]
+#RUN dotnet restore "./zcxRestService.csproj"
+RUN nuget restore "zcxRestService.csproj"
 COPY . .
-#RUN nuget restore -verbosity detailed
 WORKDIR "/src/."
-RUN xbuild /p:Configuration=Release /p:OutDir=/app
+#RUN dotnet build "zcxRestService.csproj" -c Release -o /app/build
+RUN msbuild /p:Configuration=Release "zcxRestService.csproj"
+CMD ["mono", "/app/build/zcxRestService.exe"]
 
 #FROM build AS publish
-#RUN msbuild /p:configuration=Release
-
-FROM base AS final
-WORKDIR /app
-COPY --from=build /app/publish .
-CMD ["mono", "./zcxRestService.exe"]
+#RUN dotnet publish "zcxRestService.csproj" -c Release -o /app/publish
+#
+#FROM base AS final
+#WORKDIR /app
+#COPY --from=publish /app/publish .
+#ENTRYPOINT ["dotnet", "zcxRestService.dll"]
